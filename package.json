@@ -1,14 +1,44 @@
 {
     "private": true,
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "axios": "^1.1.2",
-        "laravel-vite-plugin": "^0.7.2",
+        "axios": "^0.19",
+        "bootstrap": "^4.5.3",
+        "cross-env": "^7.0",
+        "dotenv": "^8.2.0",
+        "laravel-mix": "^5.0.1",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "vite": "^4.0.0"
+        "popper.js": "^1.12",
+        "resolve-url-loader": "^3.1.0",
+        "sass": "^1.20.1",
+        "sass-loader": "^8.0.0",
+        "vue-template-compiler": "2.6.12"
+    },
+    "dependencies": {
+        "@riophae/vue-treeselect": "^0.4.0",
+        "@syncfusion/ej2-vue-dropdowns": "^18.3.35",
+        "bootstrap": "^4.5.3",
+        "bootstrap-vue": "^2.21.2",
+        "js-sha256": "^0.9.0",
+        "lingallery": "^1.3.7",
+        "mix-env-file": "^0.1.0",
+        "qs-stringify": "^1.2.1",
+        "tiptap": "^1.30.0",
+        "toastr": "^2.1.4",
+        "vue": "2.6.12",
+        "vue-browser-geolocation": "^1.8.0",
+        "vue-multiselect": "^2.1.6",
+        "vue-router": "^3.4.3",
+        "vue-scroll-loader": "^2.2.0",
+        "vuejs-dialog": "^1.4.2",
+        "vuex": "^3.5.1"
     }
 }
