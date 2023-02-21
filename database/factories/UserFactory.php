@@ -21,6 +21,7 @@ class UserFactory extends Factory
             'name' => fake()->userName(),
             'phone' => '+380' . fake()->numerify('#########'),
             'email' => null,
+            'created_at' => fake()->dateTimeBetween('-1 year'),
         ];
     }
 }
