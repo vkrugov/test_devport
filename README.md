@@ -1,14 +1,15 @@
+
 # Installation
 
 ## TestApp
 
 Required:
-- PHP 7.4+
+- PHP 8.1+
 - Mysql
 
 #You need
 - create DataBase 'test_devport' in MySql
-- sudo apt-get install php7.4-gd
+- sudo apt-get install php8.1-gd
 
 ## For Localhost
 
