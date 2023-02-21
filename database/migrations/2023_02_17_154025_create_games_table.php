@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('url')->unique();
             $table->unsignedBigInteger('user_id');
             $table->dateTime('expired_at')->index();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('user_id')
