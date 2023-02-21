@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row m1-2 block-shadow">
-            <div class="col-lg-4">
+            <div class="col-lg-2">
                 <div>
                     <strong>Name</strong>
                 </div>
@@ -12,6 +12,12 @@
                     <strong>Phone:</strong>
                 </div>
                 <span>{{ user.phone }}</span>
+            </div>
+            <div class="col-lg-2">
+                <div>
+                    <strong>Created Date:</strong>
+                </div>
+                <span>{{ user.created_at }}</span>
             </div>
             <div class="col-lg-2">
                 <div>

@@ -4,14 +4,17 @@
             Users
         </h1>
         <div class="row pt-3">
-            <div class="col-lg-8">
-                <b-input type="text" v-model="filter.searchText" />
+            <div class="col-lg-6">
+                <b-input type="text" v-model="filters.searchInput" />
             </div>
-            <div class="col-lg-2 pt-1">
+            <div class="col-lg-2">
                 <button class="btn btn-dark btn-block" @click="search">Search</button>
             </div>
-            <div class="col-lg-2 pt-1">
+            <div class="col-lg-2">
                 <button class="btn btn-secondary btn-block" @click="clearSearch">Clear</button>
+            </div>
+            <div class="col-lg-2">
+                <router-link :to="{name: 'createUser'}" class="btn btn-info" @click="clearSearch">Create New</router-link>
             </div>
         </div>
         <hr>
@@ -72,8 +75,8 @@ export default {
             page: 1,
             offset: 0,
             meta: {},
-            filter: {
-                searchText: '',
+            filters: {
+                searchInput: '',
             },
             sort: "-created_at",
             sortOptions: [
@@ -88,8 +91,8 @@ export default {
     },
     methods: {
         clearSearch() {
-            this.filter = {
-                searchText: '',
+            this.filters = {
+                searchInput: '',
             };
             this.search();
         },
@@ -108,7 +111,7 @@ export default {
         loadUsers() {
             this.offset = (this.page * this.limit) - this.limit;
             let params = {
-                filter: this.filter,
+                filters: this.filters,
                 sort: this.sort,
                 offset: this.offset,
                 limit: this.limit

@@ -1,4 +1,15 @@
 
+# Live Demo
+```
+http://3.140.230.130/
+```
+
+### Login as Admin:
+```
+Login: admin@admin.com
+Password: 123456
+```
+
 # Installation
 
 ## TestApp

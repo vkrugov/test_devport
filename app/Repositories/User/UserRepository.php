@@ -97,20 +97,20 @@ class UserRepository implements UserRepositoryInterface
         $offset = $offset ?? self::DEFAULT_OFFSET;
         $page = ($offset + $limit) / $limit;
 
-        $query = User::query()->select('id');
+        $query = User::query()->select('users.id');
 
         if (count($filters) > 0) {
             $query = $this->applyFilters($query, $filters);
         }
 
-        $query = $this->applyBasicSort($query, $orderBy);
         $total = $query->count();
+        $query = $this->applyBasicSort($query, $orderBy);
 
         $userIds = $query
-            ->groupBy('id')
+            ->groupBy('users.id')
             ->offset($offset)
             ->limit($limit)
-            ->pluck('id')
+            ->pluck('users.id')
             ->all();
 
         $userData = $this->getUserDataByIds($userIds, $orderBy);
@@ -129,14 +129,14 @@ class UserRepository implements UserRepositoryInterface
         $column = str_replace('-', '', $orderBy);
         $direction = str_starts_with($orderBy, '-') ? 'desc' : 'asc';
 
-        switch ($orderBy) {
+        switch ($column) {
             case 'name':
             case 'phone':
             case 'created_at':
                 $query->orderBy($column, $direction);
                 break;
             case 'games_count':
-                $query->leftJoin('games', 'game.user_id', 'users.id');
+                $query->leftJoin('games', 'games.user_id', 'users.id');
                 $query->orderByRaw("COUNT(games.id) {$direction}");
                 break;
             default:
@@ -158,7 +158,7 @@ class UserRepository implements UserRepositoryInterface
         $column = str_replace('-', '', $orderBy);
         $direction = str_starts_with($orderBy, '-') ? 'desc' : 'asc';
 
-        switch ($orderBy) {
+        switch ($column) {
             case 'name':
             case 'phone':
             case 'created_at':
@@ -181,10 +181,10 @@ class UserRepository implements UserRepositoryInterface
      */
     private function applyFilters(Builder $query, array $filters): Builder
     {
-        if (array_key_exists('searchInput', $filters)) {
+        if (array_key_exists('searchInput', $filters) && !empty($filters['searchInput'])) {
             $searchInput = $filters['searchInput'];
             $query->where(function (Builder $query) use ($searchInput) {
-                $query->where('name', $searchInput)->orWhere('phone', $searchInput);
+                $query->whereRaw("name LIKE '%{$searchInput}%'")->orWhereRaw("phone LIKE '%{$searchInput}%'");
             });
         }
 

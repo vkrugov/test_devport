@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -44,7 +45,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable implements JWTSubject
 {
-    use Notifiable, HasRoles;
+    use Notifiable, HasRoles, HasFactory;
 
     /**
      * @var string[]
