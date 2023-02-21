@@ -194,8 +194,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ServiceBindProvider::class,
 
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*

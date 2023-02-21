@@ -15,15 +15,22 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'api/admin/*', 'api/users/*', '*'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['POST', 'GET', 'DELETE', 'PUT', '*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => [
+        'http://localhost:8080',
+        'http://localhost:8081',
+        'http://localhost:8082',
+        'http://127.0.0.1:8080',
+        'http://127.0.0.1:8081',
+        'http://127.0.0.1:8082',
+        ],
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*'],
+    'allowed_headers' => ['X-Custom-Header', 'Upgrade-Insecure-Requests', '*'],
 
     'exposed_headers' => [],
 
