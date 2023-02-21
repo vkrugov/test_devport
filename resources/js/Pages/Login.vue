@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-2 login-page">
-        <b-form @submit.prevent="signIn">
+        <b-form @submit.prevent="signIn" class="container w-75">
             <b-form-group label="Email" class="text-left">
                 <b-form-input
                     v-model="email"
