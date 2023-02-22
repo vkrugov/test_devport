@@ -31,6 +31,7 @@
                     <div class="cian-text">
                     <span class="cursor-pointer site-link" data-title="Delete">
                         <b-icon icon="trash" aria-hidden="true"
+                                v-if="authUser.id !== user.id"
                                 v-confirm="{
                                 loader: true,
                                 ok: dialog => deleteUser(dialog, user.id),
@@ -52,6 +53,7 @@
 
 <script>
 import api from "../../../config";
+import {mapState} from "vuex";
 
 export default {
     name: "UserPreview",
@@ -61,6 +63,9 @@ export default {
             type: Object,
         }
     },
+    computed: mapState({
+        authUser: (state) => state.auth.user,
+    }),
     methods: {
         deleteUser(dialog) {
             api.delete(`users/${this.user.id}`).then((response) => {
