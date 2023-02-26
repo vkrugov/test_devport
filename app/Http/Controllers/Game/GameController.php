@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Game;
 
-use App\Events\GameDestroyed;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Game\StoreRequest;
 use App\Http\Resources\GameResource;
@@ -48,7 +47,6 @@ class GameController extends Controller
      */
     public function destroy(Game $game): JsonResponse
     {
-        broadcast(new GameDestroyed($game->id));
         $game->delete();
 
         return response()->json([

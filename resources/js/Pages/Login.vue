@@ -1,6 +1,9 @@
 <template>
     <div class="container mt-2 login-page">
         <b-form @submit.prevent="signIn" class="container w-75">
+            <h1 class="text-center">
+                Login as Admin
+            </h1>
             <b-form-group label="Email" class="text-left">
                 <b-form-input
                     v-model="email"

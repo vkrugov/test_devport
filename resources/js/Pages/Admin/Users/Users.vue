@@ -4,16 +4,16 @@
             Users
         </h1>
         <div class="row pt-3">
-            <div class="col-lg-6">
+            <div class="col-lg-6 mt-1">
                 <b-input type="text" v-model="filters.searchInput" />
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 mt-1">
                 <button class="btn btn-dark btn-block" @click="search">Search</button>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 mt-1">
                 <button class="btn btn-secondary btn-block" @click="clearSearch">Clear</button>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-2 mt-1">
                 <router-link :to="{name: 'createUser'}" class="btn btn-info" @click="clearSearch">Create New</router-link>
             </div>
         </div>

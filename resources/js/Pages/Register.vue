@@ -1,6 +1,9 @@
 <template>
     <div class="container mt-2 login-page">
         <b-form @submit.prevent="register" class="container  w-75">
+            <h1 class="text-center">
+                Registration
+            </h1>
             <b-form-group label="Username" class="text-left">
                 <b-form-input
                     v-model="name"

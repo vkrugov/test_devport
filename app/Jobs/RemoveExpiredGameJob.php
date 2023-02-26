@@ -2,10 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Events\GameDestroyed;
 use App\Models\Game;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -34,6 +32,5 @@ class RemoveExpiredGameJob implements ShouldQueue
     public function handle(): void
     {
         $this->game->delete();
-        broadcast(new GameDestroyed($this->game->id));
     }
 }
