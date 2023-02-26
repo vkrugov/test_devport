@@ -60,6 +60,7 @@ class UserController extends Controller
      */
     public function destroy(User $user): JsonResponse
     {
+        $user->games()->delete();
         $user->delete();
 
         return response()->json([
