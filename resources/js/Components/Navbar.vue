@@ -6,14 +6,24 @@
                     <img src="/images/logo.svg" alt="briz-logo">
                 </router-link>
             </b-navbar-brand>
-            <b-navbar-nav class="ml-auto">
-                <li class="nav-item" v-if="isAdmin">
-                    <span @click="logout" class="nav-link cursor-pointer">Logout</span>
-                </li>
-                <li class="nav-item" v-else>
-                    <router-link :to="{name: 'login'}" class="nav-link cursor-pointer">Login as Admin</router-link>
-                </li>
-            </b-navbar-nav>
+
+            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+            <b-collapse id="nav-collapse" is-nav>
+                <b-navbar-nav v-if="isAdmin">
+                    <b-nav-item>
+                        <router-link class="nav-link" :to="{name: 'users'}">Users</router-link>
+                    </b-nav-item>
+                </b-navbar-nav>
+                <b-navbar-nav class="ml-auto">
+                    <li class="nav-item" v-if="isAdmin">
+                        <span @click="logout" class="nav-link cursor-pointer">Logout</span>
+                    </li>
+                    <li class="nav-item" v-else>
+                        <router-link :to="{name: 'login'}" class="nav-link cursor-pointer">Login as Admin</router-link>
+                    </li>
+                </b-navbar-nav>
+            </b-collapse>
         </b-navbar>
     </div>
 </template>
