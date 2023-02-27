@@ -21,11 +21,17 @@
             </div>
             <div class="col-lg-2">
                 <div>
+                    <strong>Role:</strong>
+                </div>
+                <span v-if="user.roles && user.roles.name">{{ user.roles.name }}</span>
+            </div>
+            <div class="col-lg-2">
+                <div>
                     <strong>Games Count:</strong>
                 </div>
                 <span>{{ user.games_count }}</span>
             </div>
-            <div class="col-lg-3 text-center">
+            <div class="col-lg-2 text-center">
                 <div class="actions">
                     <strong>Actions:</strong>
                     <div class="cian-text">
